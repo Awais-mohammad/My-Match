@@ -44,7 +44,7 @@ export class ChatPage implements OnInit {
   getmessages() {
    
   }
-
+/*chk */
   ngOnInit() {
     this.getmessages();
     const userSub=this.firebaseAuth.auth.currentUser.uid;
