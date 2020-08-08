@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-icon name="arrow-back" slot="start" (click)="closeModal()"></ion-icon>
+    <ion-title>Comments</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf = "post">
+    <div *ngIf = "post.comments">
+      <ion-item *ngFor = "let comment of Comments; let i = index">
+       <ion-title>{{comment.msg}}</ion-title>
+        <ion-icon name = "heart-outline" *ngIf = "!comment.liked " (click) = "addLike()"></ion-icon>
+        <ion-icon color="danger" name = "heart" *ngIf = "comment.liked"></ion-icon>
+      </ion-item>
+    </div>
+    <div *ngIf = "!post.comments">
+      <div style = "position:absolute; top:40%; font-size:2em;text-align:center">No Comments to show!</div>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-input [(ngModel)] = "msg" placeholder = "Enter your comment here." slot="start" style = "width:80%;">
+    </ion-input>
+    <ion-icon name ="arrow-forward" slot ="end" (click)= "generatekey()"></ion-icon>
+    </ion-toolbar>
+</ion-footer>

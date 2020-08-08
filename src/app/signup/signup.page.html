@@ -1,0 +1,97 @@
+<ion-content>
+  <ion-header no-border>
+    <div *ngIf="!signuping" class="login-header ion-paddding">
+      <img class="logoimage" src="../../assets/user.png">
+    </div>
+  </ion-header>
+
+  <div class="centre" *ngIf="!signuping">
+    <div heading-column-lr>
+      <h1 big-heading>Sign Up</h1>
+    </div>
+    <ion-item transparent>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="email" [(ngModel)]="email"></ion-input>
+    </ion-item>
+    <ion-item transparent>
+      <ion-label position="floating">Password</ion-label>
+      <ion-input type="password" [(ngModel)]="password"></ion-input>
+    </ion-item>
+    <ion-item transparent>
+      <ion-label position="floating">Confirm Password</ion-label>
+      <ion-input type="password" [(ngModel)]="confirmpassword"></ion-input>
+    </ion-item>
+    <ion-item>
+
+      <ion-label position="stacked">First Name <ion-text color="danger">*</ion-text>
+      </ion-label>
+      <ion-input required type="text" [(ngModel)]="firstname"></ion-input>
+
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Last Name <ion-text color="danger">*</ion-text>
+      </ion-label>
+      <ion-input required type="text" [(ngModel)]="lastname"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">User Name</ion-label>
+      <ion-input [(ngModel)]="username"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Address</ion-label>
+      <ion-input placeholder="Address Line 1" [(ngModel)]="adress"></ion-input>
+      <ion-input placeholder="City" [(ngModel)]="city "></ion-input>
+      <ion-input placeholder="State" [(ngModel)]="state"></ion-input>
+      <ion-input placeholder="Zip Code" [(ngModel)]="zip"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Phone</ion-label>
+      <ion-input placeholder="+92 300 000 0000" [(ngModel)]="cellphone"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Status</ion-label>
+      <ion-input placeholder="Single/Married/Divorced" [(ngModel)]="status"></ion-input>
+    </ion-item>
+   <div linespace></div>
+    <ion-button color="warning" shape="round" fill="solid" size="large" expand="block" (click)="validator()">Sign up
+    </ion-button>
+    <ion-button fill="clear" class="ion-text-center" (click)="gotoLogin()">Already have an account login?
+    </ion-button>
+  </div>
+
+     <!--Setting profile image-->
+     <div *ngIf="!profImage && signuping">
+      <div class="card header avatar">
+        <img src="../../assets/placeholder.png">
+        <div class="profilebutton">
+          <ion-button fill="clear" (click)="takePhoto()">
+            <ion-icon name="camera"></ion-icon>
+          </ion-button>
+        </div>
+      </div>
+    </div>
+
+  <div *ngIf="signuping && profImage" class="verifyEmail">
+    <div class="card header avatar">
+      <img src="../../assets/placeholder.png">
+      <div class="profilebutton">
+        <ion-button fill="clear" (click)="takePhoto()">
+          <ion-icon name="camera"></ion-icon>
+        </ion-button>
+      </div>
+    </div>
+    <div style="text-align: center;">
+      Check your inbox we have sent yu a verification email
+    </div>
+    <div style="text-align: center;">
+      (also check spam)
+    </div>
+    <ion-button (click)="checkVerify()">
+      Check Verification
+    </ion-button>
+  </div>
+
+</ion-content>

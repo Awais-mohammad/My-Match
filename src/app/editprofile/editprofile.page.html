@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="home/userprofile"></ion-back-button>
+      </ion-buttons>
+  
+    <ion-title>editprofile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ <div class="colourback">
+ <ion-card>
+ 
+    <ion-item>
+
+      <ion-label position="stacked">First Name <ion-text color="danger">*</ion-text>
+      </ion-label>
+      <ion-input required type="text" [(ngModel)]="firstname"></ion-input>
+
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Last Name <ion-text color="danger">*</ion-text>
+      </ion-label>
+      <ion-input required type="text" [(ngModel)]="lastname"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">User Name</ion-label>
+      <ion-input [(ngModel)]="username"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Address</ion-label>
+      <ion-input placeholder="Address Line 1" [(ngModel)]="adress"></ion-input>
+      <ion-input placeholder="City" [(ngModel)]="city "></ion-input>
+      <ion-input placeholder="State" [(ngModel)]="state"></ion-input>
+      <ion-input placeholder="Zip Code" [(ngModel)]="zip"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Phone</ion-label>
+      <ion-input placeholder="+92 300 000 0000" [(ngModel)]="cellphone"></ion-input>
+    </ion-item>
+
+    <ion-button (click)="changeprof()">Update User profile</ion-button>
+   
+  </ion-card>
+</div>
+</ion-content>

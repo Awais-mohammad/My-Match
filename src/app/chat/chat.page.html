@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-icon name="arrow-back" slot="start" (click)="closeModal()"></ion-icon>
+    <ion-title>Chat</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-item>
+
+    <div *ngIf="meesagedata">
+      <div *ngFor="let item of meesagedata.messages">
+        <ion-item> {{item.message}}</ion-item>
+      </div>
+
+
+
+
+    </div>
+
+
+  </ion-item>
+
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-input slot="start" style="width: 70%;" [(ngModel)]="msg" placeholder="Enter ur msg msg"></ion-input>
+    <ion-icon name="arrow-forward" slot="end" (click)="sendmsg()"></ion-icon>
+
+  </ion-toolbar>
+</ion-footer>

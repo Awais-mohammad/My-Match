@@ -1,0 +1,121 @@
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="chevron-down-circle-outline" pullingText="Pull to refresh"
+      refreshingSpinner="circles" refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-header>
+    <ion-toolbar>
+      <div *ngIf="search">
+
+        <ion-card-header>Search By Username</ion-card-header>
+        <ion-searchbar mode="ios" showCancelButton="focus" cancelButtonText="Cancel" [(ngModel)]="uname">
+        </ion-searchbar>
+        <ion-button style="align-content: center;" (click)="searchUsers()">
+          Find
+        </ion-button>
+        <ion-button fill="clear" style="align-content: center;" (click)="showsearchcontent()">Cancel</ion-button>
+
+      </div>
+
+      <div *ngIf="!search">
+        <ion-title style=" color: blueviolet; font-size: medium; font: outline;">
+          <ion-label style="align-content: flex-start;">mymatch</ion-label>
+          <ion-button fill="clear" (click)="showsearchcontent()">
+            <ion-icon name="search"></ion-icon>
+          </ion-button>
+          <ion-button fill="clear" (click)="showUsers()">
+            <ion-icon name="eye"></ion-icon>
+          </ion-button>
+
+        </ion-title>
+      </div>
+
+    </ion-toolbar>
+  </ion-header>
+
+  <div *ngIf="search">
+    <div *ngFor="let user of searchusers">
+      <ion-card button="true" (click)="openModel(user)">
+        <ion-item>
+          <ion-avatar>
+            <img src="{{user.imageURL}}" />
+          </ion-avatar>
+          <ion-label>
+            {{user.username}}
+          </ion-label>
+        </ion-item>
+      </ion-card>
+    </div>
+  </div>
+  <div class="aligncentre" *ngIf="show &&!search &&!poster">
+    <ion-label>Displaying Users nearby</ion-label>
+    <ion-card button="true" (click)="openModel()" *ngFor="let user of otherUsers">
+      <ion-item style="padding: 10px;">
+        <ion-avatar>
+          <img src="{{user.photoUrl}}">
+        </ion-avatar>
+        {{user.username}}
+      </ion-item>
+
+    </ion-card>
+    <ion-button (click)="showUsers()">
+      <ion-icon name="checkmark-done-outline"></ion-icon>
+    </ion-button>
+  </div>
+
+
+  <ion-button expand="full" shape="round" (click)="addpost()" style="margin:10%;">
+    Click to add post
+    <ion-icon slot="start" name="add-outline"></ion-icon>
+  </ion-button>
+
+
+  <div *ngIf="userPost && !poster">
+    <div *ngIf="!showcomments">
+      <ion-label>User Feed</ion-label>
+      <ion-card button="true" *ngFor="let post of userPost;let i=index">
+        <ion-item>
+          {{post.descrip}}
+        </ion-item>
+        <ion-item style="padding: 10px;">
+          <img src="{{post.imageURL}}">
+        </ion-item>
+        <ion-item>
+            <ion-icon name="heart-outline" (click)="addlike(post)" *ngIf="!Posts[i].like">Like</ion-icon>  
+          <ion-icon color="danger" name="heart" *ngIf="Posts[i].like"></ion-icon>
+          <ion-icon style="margin-left: 4%;" name="chatbubble-outline"   (click)="comment(post)"></ion-icon>
+        </ion-item>
+      </ion-card>
+    </div>
+
+  </div>
+
+
+  <div *ngIf="poster">
+    <ion-button (click)="ChatModel()">CHat</ion-button>
+    <ion-button (click)="comment()">comments</ion-button>
+    <ion-card>
+      <div style="text-align:center; padding: 16px">
+        <ion-label>Enter a post description and hit Capture Image to create a post</ion-label>
+      </div>
+
+      <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;">
+        <ion-item style="padding:16px">
+          <ion-label position="floating">Post Caption:</ion-label>
+          <ion-input [(ngModel)]="description" type="text"></ion-input>
+        </ion-item>
+        <ion-button (click)="takePhoto()">
+          Capture Image
+        </ion-button>
+
+        <ion-button (click)="uploadpost()">
+          Upload
+        </ion-button>
+      </div>
+    </ion-card>
+
+  </div>
+
+</ion-content>

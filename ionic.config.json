@@ -1,0 +1,7 @@
+{
+  "name": "mymatch",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

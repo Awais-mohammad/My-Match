@@ -1,0 +1,70 @@
+.aligncentre {
+  padding: to-lower-case($string: "");
+  text-align: center;
+}
+
+.card {
+  margin: 0 auto;
+}
+.header {
+  height: 200px;
+}
+.avatar {
+  width: 160px;
+  height: 160px;
+  position: relative;
+  margin: 0 auto;
+}
+.image {
+  display: block;
+  border-radius: 50%;
+  position: absolute;
+  bottom: calc(-1 * (80px + 4px));
+  border: 8px solid #9dc912;
+  background-color: #fff;
+}
+
+
+ion-toolbar {
+  --background: white;
+}
+.profilebutton {
+  z-index: 2;
+  position: absolute;
+  right: 0%;
+  top: 100%;
+  margin: auto;
+  --background: transparent;
+}
+.card-body {
+  background-color: #ffffff;
+  padding: 30px;
+  height: calc(100vh - (200px + 56px));
+  overflow: hidden;
+
+  .user-meta {
+    padding-top: 40px;
+
+    .playername {
+      margin-top: 4%;
+      margin-bottom: 4%;
+      font-size: 24px;
+      font-weight: 600;
+      color: #303940;
+    }
+
+    .country {
+      margin-top: 20%;
+      font-size: 90%;
+      color: #949ea6;
+      text-transform: uppercase;
+      margin: 0 auto;
+    }
+  }
+}
+
+.labelcntr {
+ 
+  
+   align-content: center;
+}

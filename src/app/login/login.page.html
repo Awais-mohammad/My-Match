@@ -1,0 +1,31 @@
+<ion-content>
+  
+  <ion-header no-border>
+    <div class="login-header ion-paddding">
+      <img class="logoimage" src="../../assets/user.png" >
+    </div>
+  </ion-header>
+
+  <div class="centre">
+    <div heading-column-lr>
+      <h1 big-heading>Login</h1>
+    </div>
+    <ion-label>Welcome,Login to continue</ion-label>
+    <ion-item transparent>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="email" [(ngModel)]="email"></ion-input>
+    </ion-item>
+    <ion-item transparent>
+      <ion-label position="floating">password</ion-label>
+      <ion-input type="password" [(ngModel)]="pass"></ion-input>
+    </ion-item>
+
+  </div>
+  <ion-button forgot-password fill="clear" (click)="checkemail()">Forgot Password</ion-button>
+  <div linespace></div>
+  <ion-button color="warning" shape="round" fill="solid" size="large" expand="block" (click)="validator()">LOGIN
+  </ion-button>
+  <ion-button fill="clear" class="ion-text-center" (click)="gotoSignup()">Dont't have an account-Register?
+  </ion-button>
+
+</ion-content>

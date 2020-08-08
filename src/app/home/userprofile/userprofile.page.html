@@ -1,0 +1,106 @@
+<div *ngIf="userData">
+
+  <ion-content [fullscreen]="true">
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content pullingIcon="chevron-down-circle-outline" pullingText="Pull to refresh"
+        refreshingSpinner="circles" refreshingText="Refreshing...">
+      </ion-refresher-content>
+    </ion-refresher>
+    <ion-header translucent no-border>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-button color="light">
+            <ion-text color="dark">
+              WELCOME {{userData.firstname}}
+            </ion-text>
+          </ion-button>
+        </ion-buttons>
+        <ion-title>&nbsp;</ion-title>
+        <ion-button fill="clear" slot="end" (click)="showmore()">More</ion-button>
+        <ion-buttons slot="end">
+          <ion-button>
+            <ion-icon slot="icon-only" src="../../assets/checkmark-filled.svg"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+
+    <div class="fullpage">
+      <div id="container" *ngIf="updatepassword">
+        <ion-card class="card" style="height: 100px;">
+          <ion-card-header>PASSWORD UPDATION</ion-card-header>
+          <ion-item>
+            <ion-label position="stacked"> New password <ion-text color="danger">*</ion-text>
+            </ion-label>
+            <ion-input required type="password" [(ngModel)]="newPass"></ion-input>
+          </ion-item>
+        </ion-card>
+        <ion-button slot="end" (click)="confirmingupdatepasword()">Update password</ion-button>
+        <ion-button fill="clear" slot="end" (click)="resetpasswordfalse()">cancel</ion-button>
+      </div>
+      <div>
+
+        <div *ngIf="!updatepassword">
+          <div class="pagetext">
+            <div *ngIf="!userData">
+              <img src=".././../../assets/Developer.jpg" style="width: 100%;height: 20%;">
+              <div class="card header avatar">
+                <img src="../../../assets/placeholder.png" alt="">
+                <div class="profilebutton">
+                  <ion-icon name="camera" (click)="takePhoto()"></ion-icon>
+                </div>
+
+              </div>
+            </div>
+
+            <div *ngIf="userData">
+
+              <div class="card header avatar">
+                <img src="{{userData.imageURL}}">
+                <div class="profilebutton">
+                  <ion-button fill="clear" (click)="takePhoto()">
+                    <ion-icon name="camera"></ion-icon>
+                  </ion-button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <div class="user-meta ion-text-center">
+              <div class="playername">
+                <ion-label>{{userData.firstname}}
+                  {{userData.lastname}}</ion-label>
+              </div>
+              <div class="country">
+                <ion-label>{{timeAgo}}</ion-label>
+              </div>
+              <div class="playername">
+                <ion-label></ion-label>
+              </div>
+            </div>
+            <ion-item expand="full" color="primary">ZIP {{userData.zip}}
+            </ion-item>
+            <ion-item expand="full" color="secondary">{{userData.email}}
+            </ion-item>
+            <ion-item expand="full" color="danger">
+              <ion-icon name="heart"></ion-icon>{{userData.status}}
+            </ion-item>
+            <ion-label class="labelcntr">__________________________________</ion-label>
+            <br>
+            <ion-label>USERS FEED</ion-label>
+            <div>
+              <ion-label>Showing users posts</ion-label>
+              -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+  </ion-content>
+</div>
